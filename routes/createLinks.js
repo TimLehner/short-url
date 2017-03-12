@@ -68,7 +68,7 @@ function createNewLink(res, url, collection, db) {
             tiny: parseInt(count.count).toString(16)
         };
         collection.insert(newLink);
-        collection.update({count: {$exists: true}}, {count: parseInt(count.count) + 
+        collection.update({count: {$exists: true}}, {count: parseInt(count.count) +
         parseInt(Math.floor(Math.random() * 16))});
         db.close();
         res.end(JSON.stringify({

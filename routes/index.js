@@ -26,7 +26,7 @@ router.get('/l/:url', function (req, res, next) {
                 res.render("error", {message: 404, error: {status: "No such short link", stack: "Either the link has expired or it never existed."}});
             } else {
                 console.log(item);
-                res.redirect('http://' + item.url);
+                res.redirect(item.url);
                 res.end();
             }
             db.close();
