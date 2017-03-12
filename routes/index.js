@@ -4,7 +4,7 @@ var MongoClient = require('mongodb').MongoClient;
 
 /* GET specification listing. */
 router.get('/', function(req, res, next) {
-    res.render('specification', {url: "https://fcc-challenge-url-short.herokuapp.com/"});
+    res.render('specification', {url: "https://fcc-challenge-url-short.herokuapp.com"});
 });
 
 /* GET home page. */
