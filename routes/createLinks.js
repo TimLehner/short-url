@@ -4,8 +4,9 @@ var MongoClient = require('mongodb').MongoClient;
 
 
 /* GET home page. */
-router.get('/:url', function (req, res, next) {
+router.get('/', function (req, res, next) {
     // Connect to the db
+    var url = req.query.url;
     MongoClient.connect("mongodb://tim:" + process.env.dbsecret + "@ds119368.mlab.com:19368/timlehner-sandbox", function (err, db) {
         if (err) {
             connectionErr(res, err);
@@ -13,7 +14,7 @@ router.get('/:url', function (req, res, next) {
             return;
         }
         var linkColl = db.collection('links');
-        var url = req.params.url;
+        var url = req.query.url;
 
         if (isUri(url)) {
             linkColl.findOne({
@@ -67,7 +68,8 @@ function createNewLink(res, url, collection, db) {
             tiny: parseInt(count.count).toString(16)
         };
         collection.insert(newLink);
-        collection.update({count: {$exists: true}}, {count: parseInt(count.count) + 1});
+        collection.update({count: {$exists: true}}, {count: parseInt(count.count) + 
+        parseInt(Math.floor(Math.random() * 16))});
         db.close();
         res.end(JSON.stringify({
             original_url: newLink.url,
