@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 /* GET home page. */
 router.get('/l/:url', function (req, res, next) {
-    MongoClient.connect("mongodb://ds119368.mlab.com:19368/timlehner-sandbox", function (err, db) {
+    MongoClient.connect("mongodb://tim:" + process.env.dbsecret + "@ds119368.mlab.com:19368/timlehner-sandbox", function (err, db) {
         if (err) {
             connectionErr(res, err);
             db.close();

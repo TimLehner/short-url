@@ -6,7 +6,7 @@ var MongoClient = require('mongodb').MongoClient;
 /* GET home page. */
 router.get('/:url', function (req, res, next) {
     // Connect to the db
-    MongoClient.connect("mongodb://ds119368.mlab.com:19368/timlehner-sandbox", function (err, db) {
+    MongoClient.connect("mongodb://tim:" + process.env.dbsecret + "@ds119368.mlab.com:19368/timlehner-sandbox", function (err, db) {
         if (err) {
             connectionErr(res, err);
             db.close();
