@@ -2,19 +2,36 @@ html
   height: 100%
 
 body
-  padding: 50px
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
   height: 100%
-
+  @media screen and (min-width: 600px)
+    padding: 50px
 a
   color: #00B7FF
 
 footer
-  position: fixed
-  bottom: 0
-  left: 50px
-  right: 50px
+  background: white
   padding: 10px
+
+  @media screen and (max-width: 991px)
+    padding: 10px
+    span
+      text-align: start !important
+
+  @media screen and (min-width: 992px)
+    position: fixed
+    bottom: 0
+    left: 75px
+    right: 75px
+
+
+  hr
+    padding-top: 0
+    margin-top: 0
+
+.container
+  padding-bottom: 95px
+
 
 .row
   display: flex
